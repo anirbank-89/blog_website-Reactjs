@@ -11,10 +11,10 @@ const Home = () => {
         <React.Fragment>
             <Banner />
             <Grid container>
-                <Grid item>
+                <Grid item lg={2} xs={12} sm={2}>
                     <Categories />
                 </Grid>
-                <Grid item>
+                <Grid item lg={10} xs={12} sm={10}>
                     <Posts />
                 </Grid>
             </Grid>

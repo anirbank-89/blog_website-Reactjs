@@ -1,5 +1,5 @@
 import { Grid } from "@material-ui/core";
-import React from "react";
+import { Link } from "react-router-dom";
 
 // components imported
 import OnePost from "./OnePost";
@@ -10,7 +10,9 @@ const Posts = () => {
     return (
         posts.map(post => (
             <Grid item lg={3} sm={4} xs={12}>
-                <OnePost />
+                <Link to={"/blog"} style={{textDecoration: 'none', color: 'inherit'}}>
+                    <OnePost />
+                </Link>
             </Grid>
         ))
     )

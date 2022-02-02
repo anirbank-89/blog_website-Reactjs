@@ -55,11 +55,11 @@ const CreateNew = () => {
 
     const [post, setPost] = useState(initialValue);
 
-    const handleChange = (e)=>{
-        setPost({...post, [e.target.name]: e.target.value});
+    const handleChange = (e) => {
+        setPost({ ...post, [e.target.name]: e.target.value });
     }
 
-    const savePost = async ()=>{
+    const savePost = async () => {
         await createPost(post);
         history.push('/');
     }
@@ -74,17 +74,17 @@ const CreateNew = () => {
                 <InputBase
                     placeholder="tile"
                     className={classes.textField}
-                    name="title" 
+                    name="title"
                     onChange={(e) => handleChange(e)}
                 />
-                <Button variant="contained" color="primary" onClick={()=>savePost()} >Publish</Button>
+                <Button variant="contained" color="primary" onClick={() => savePost()} >Publish</Button>
             </FormControl>
 
             <TextareaAutosize
                 minRows={5}
                 placeholder="Tell your story...."
-                className={classes.textArea} 
-                name="description" 
+                className={classes.textArea}
+                name="description"
                 onChange={(e) => handleChange(e)}
             />
         </Box>

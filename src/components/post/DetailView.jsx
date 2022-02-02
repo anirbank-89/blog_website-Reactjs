@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Box, makeStyles, Typography } from "@material-ui/core";
 import { Edit, Delete } from '@material-ui/icons';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-import { getBlog } from "../../service/api";
+import { deleteBlog, getBlog } from "../../service/api";
 
 const useStyles = makeStyles((theme)=>({
     container: {
@@ -48,6 +48,8 @@ const DetailView = ({ match }) => {
 
     const classes = useStyles();
 
+    const history = useHistory();
+
     const [post, setPost] = useState({});
 
     useEffect(()=>{
@@ -59,12 +61,17 @@ const DetailView = ({ match }) => {
         fetchData();
     }, []);
 
+    var deleteData = async () => {
+        await deleteBlog(post._id);
+        history.push('/');
+    }
+
     return (
         <Box className={classes.container}>
             <img src={post.image || url} alt="banner" className={classes.image} />
             <Box className={classes.icons}>
-                <Link to="/update-blog"><Edit className={classes.icon} color="primary" /></Link>
-                <Delete className={classes.icon} color="error" />
+                <Link to={`/update-blog/${post._id}`}><Edit className={classes.icon} color="primary" /></Link>
+                <Delete className={classes.icon} color="error" onClick={() => deleteData()} />
             </Box>
             <Typography className={classes.heading}>{post.title}</Typography>
 

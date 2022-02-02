@@ -32,3 +32,21 @@ export var getBlog = async (id)=>{
         console.log("Error fetching data due to ", err.message);
     }
 }
+
+export var editBlog = async (id,data) => {
+    try {
+        return await axios.put(`${URL}/blog/${id}`, data);
+    }
+    catch (err) {
+        console.log(err.message);
+    }
+}
+
+export var deleteBlog = async (id) => {
+    try {
+        return await axios.delete(`${URL}/blog/${id}`);
+    }
+    catch (err) {
+        console.log(err.message);
+    }
+}

@@ -16,7 +16,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/blog/:id" component={DetailView} />
           <Route exact path="/create-blog" component={CreateNew} />
-          <Route exact path="/update-blog" component={Update} />
+          <Route exact path="/update-blog/:id" component={Update} />
         </Switch>
       </Box>
     </BrowserRouter>

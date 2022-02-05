@@ -5,6 +5,9 @@ import { Link, useHistory } from "react-router-dom";
 
 import { deleteBlog, getBlog } from "../../service/api";
 
+// Components
+import Comments from '../comments/Comments';
+
 const useStyles = makeStyles((theme) => ({
     container: {
         padding: '0 100px',
@@ -89,6 +92,7 @@ const DetailView = ({ match }) => {
             </Box>
 
             <Typography>{post.description}</Typography>
+            <Comments post={post} />
         </Box>
     )
 }

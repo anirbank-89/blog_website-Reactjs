@@ -59,3 +59,12 @@ export var deleteBlog = async (id) => {
         console.log(err.message);
     }
 }
+
+export var newComment = async (data) => {
+    try {
+        return await axios.post(`${URL}/comment`, data);
+    }
+    catch (err) {
+        console.log("Error posting comment due to ", err.message);
+    }
+}

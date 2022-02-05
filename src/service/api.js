@@ -11,9 +11,18 @@ export var createPost = async (post)=>{
     }
 }
 
-export var getAllBlogs = async ()=>{
+export var uploadFile = async (data) => {
     try {
-        let res = await axios.get(`${URL}/blog`);
+        return await axios.post(`${URL}/blog/upload-image`, data);
+    }
+    catch (err) {
+        console.log("Error uploading image due to ", err.message);
+    }
+}
+
+export var getAllBlogs = async (query)=>{
+    try {
+        let res = await axios.get(`${URL}/blog${query}`);
 
         return res.data;
     }

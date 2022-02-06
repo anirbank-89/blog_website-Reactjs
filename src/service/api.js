@@ -68,3 +68,13 @@ export var newComment = async (data) => {
         console.log("Error posting comment due to ", err.message);
     }
 }
+
+export var getComments = async (blog_id) => {
+    try {
+        let res = await axios.get(`${URL}/comment/${blog_id}`);
+        return res.data;
+    }
+    catch (err) {
+        console.log("Error fetching comments due to ", err.message);
+    }
+}

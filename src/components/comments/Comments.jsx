@@ -1,6 +1,12 @@
 import { Box, Button, makeStyles, TextareaAutosize } from "@material-ui/core";
+import { useEffect } from "react";
 import { useState } from "react";
-import { newComment } from "../../service/api";
+
+// api calls
+import { getComments, newComment } from "../../service/api";
+
+// components
+import OneComment from './OneComment';
 
 let useStyles = makeStyles({
     component: {
@@ -34,6 +40,16 @@ var Comments = ({ post }) => {
     let classes = useStyles();
 
     const [comment, setComment] = useState(initialValues);
+    const [blogComments, setComments] = useState([]);
+
+    useEffect(() => {
+        var getData = async () => {
+            console.log("blog Id ", post._id);
+            let data = await getComments(post._id);
+            setComments(data.data);
+        }
+        getData();
+    }, [post]);
 
     var handleChange = (e) => {
         setComment({
@@ -67,6 +83,13 @@ var Comments = ({ post }) => {
                     Post
                 </Button>
             </Box>
+            {
+                blogComments && blogComments.map(item => {
+                    return (
+                        <OneComment comment={blogComments} />
+                    )
+                })
+            }
         </Box>
     )
 }

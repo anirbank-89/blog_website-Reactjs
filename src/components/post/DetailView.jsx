@@ -92,7 +92,7 @@ const DetailView = ({ match }) => {
             </Box>
 
             <Typography>{post.description}</Typography>
-            <Comments post={post} />
+            <Comments post={post} match={match} />
         </Box>
     )
 }

@@ -78,3 +78,12 @@ export var getComments = async (blog_id) => {
         console.log("Error fetching comments due to ", err.message);
     }
 }
+
+export var removeComment = async (id) => {
+    try {
+        return await axios.delete(`${URL}/comment/${id}`);
+    }
+    catch (err) {
+        console.log("Failed to delete comment due to ", err.message);
+    }
+}

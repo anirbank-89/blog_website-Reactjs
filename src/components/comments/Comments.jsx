@@ -33,7 +33,7 @@ let initialValues = {
     comment: ''
 }
 
-var Comments = ({ post }) => {
+var Comments = ({ post, match }) => {
     console.log(post);
     const url = "https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg"
 
@@ -41,15 +41,17 @@ var Comments = ({ post }) => {
 
     const [comment, setComment] = useState(initialValues);
     const [blogComments, setComments] = useState([]);
+    const [toggle, setToggle] = useState(false);
 
     useEffect(() => {
         var getData = async () => {
-            console.log("blog Id ", post._id);
-            let data = await getComments(post._id);
-            setComments(data.data);
+            console.log("blog Id ", match.params.id);
+            let res = await getComments(match.params.id);
+            console.log("Comments ", res);
+            setComments(res.data);
         }
         getData();
-    }, [post]);
+    }, [post, toggle]);
 
     var handleChange = (e) => {
         setComment({
@@ -62,6 +64,7 @@ var Comments = ({ post }) => {
 
     var postComment = async () => {
         await newComment(comment);
+        setToggle(prevVal => !prevVal);
     }
 
     return (
@@ -86,7 +89,7 @@ var Comments = ({ post }) => {
             {
                 blogComments && blogComments.map(item => {
                     return (
-                        <OneComment comment={blogComments} />
+                        <OneComment comment={item} setToggle={setToggle} />
                     )
                 })
             }

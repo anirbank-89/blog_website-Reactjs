@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const SERVER_URL = "http://localhost:8000";
+const URL = "";
 
 const initialValue = {
     title: '',
@@ -58,7 +58,7 @@ const CreateNew = () => {
     const [file, setFile] = useState('');
     const [img, setImg] = useState('');
 
-    const url = post.image ? `${SERVER_URL}/${post.image}` : "https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80";
+    const url = post.image ? `${URL}/${post.image}` : "https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80";
 
     useEffect(() => {
         var getImage = async () => {

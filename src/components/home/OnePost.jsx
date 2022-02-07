@@ -1,7 +1,5 @@
 import { Box, Typography, makeStyles } from "@material-ui/core";
 
-const SERVER_URL = "http://localhost:8000";
-
 const useStyles = makeStyles({
     container: {
         height: 350,
@@ -36,8 +34,10 @@ const useStyles = makeStyles({
     }
 });
 
+const URL = "";
+
 const OnePost = ({ post }) => {
-    const url = post.image ? `${SERVER_URL}/${post.image}` : 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80';
+    const url = post.image ? `${URL}/${post.image}` : 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80';
     const classes = useStyles();
 
     var addEllipsis = (str,limit) => {
